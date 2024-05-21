@@ -23,12 +23,6 @@ public class JpaMain {
 
         //JPA의 모든 데이터 변경은 트랜잭션 안에서 실행해야함
         try {
-            Member member = new Member();
-
-            member.setId(1L);
-            member.setName("wooki");
-
-            em.persist(member);
 
             transaction.commit();
         } catch (Exception e) {
