@@ -1,5 +1,7 @@
 package hellojpa.domain;
 
+import static jakarta.persistence.FetchType.LAZY;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -19,7 +21,7 @@ public class Category extends BaseEntity {
     private Long id;
 
     private String name;
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "PARENT_ID")
     private Category parent;
 

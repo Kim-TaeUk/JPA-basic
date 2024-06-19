@@ -1,5 +1,8 @@
 package hellojpa.domain;
 
+import static jakarta.persistence.CascadeType.ALL;
+import static jakarta.persistence.FetchType.LAZY;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,15 +28,15 @@ public class Order extends BaseEntity {
     @Column(name = "ORDER_ID")
     private Long id;
 
-    @OneToOne
+    @OneToOne(fetch = LAZY, cascade = ALL)
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     private LocalDateTime orderDate;
